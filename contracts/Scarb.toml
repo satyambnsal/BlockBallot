@@ -1,0 +1,43 @@
+[package]
+name = "cairo_contracts"
+version = "0.2.0"
+authors = [
+  "Satyam Bansal <satyamsgsits1994@gmail.com>",
+  "Krish",
+  "Sourabh",
+  "Brijesh",
+]
+description = "BlockBallot contracts"
+readme = "README.md"
+repository = "https://github.com/satyambnsal/BlockBallot"
+license = "MIT"
+keywords = ["Cairo", "Starknet", "Layer2"]
+
+[dependencies]
+starknet = ">=2.3.1"
+alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git", tag = "cairo-v2.3.0-rc0" }
+alexandria_data_structures = { git = "https://github.com/keep-starknet-strange/alexandria.git", tag = "cairo-v2.3.0-rc0" }
+alexandria_storage = { path = "./crates/alexandria_storage" }
+openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.8.0" }
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.11.0" }
+
+# comment following line if executing non-starknet cairo programs
+[[target.starknet-contract]]
+sierra = true
+casm = true
+allowed-libfuncs-list.name = "experimental"
+
+
+[tool.snforge]
+exit_first = true
+
+[tool.sncast.localaccount6]
+account = "localaccount6"
+accounts-file = "/Users/satyam/.starknet_accounts/starknet_open_zeppelin_accounts.json"
+url = "http://127.0.0.1:5050/"
+
+
+[tool.sncast.testnet1]
+account = "testnet1"
+accounts-file = "/Users/satyam/.starknet_accounts/starknet_open_zeppelin_accounts.json"
+url = "https://starknet-goerli.g.alchemy.com/v2/u9atiwbDU8wsZfikEV9AzPMBKL8adzJM"
